@@ -1,0 +1,66 @@
+@keyframes lineTransfer{
+  0%{
+    width: 0%;
+  }
+  10%{
+    width: 10%;
+  }
+  50%{
+    width: 50%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+li:hover .line{
+  opacity: 1;
+  animation: lineTransfer .3s  0s linear;
+}
+li a{
+  padding: 12px 25px!important;
+  font-weight: bolder;
+  color: #E0E0E0!important;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: .8em;
+  display: inline-block;
+  padding: 20px 24px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 1px;
+}
+.line{
+  height: 1px;
+  background: linear-gradient(to right, #eec42a, #b74d1c);
+  opacity: 0;
+  padding-top: 0;
+  box-shadow: 0 0 50px 0 rgba(247,149,30,.35), 0 0 20px 0 rgba(247,149,30,.3) inset;
+}
+.active a{
+  background-color: rgba(255,255,255,0)!important;
+  /*border: 1px dotted white;*/
+
+}
+.active .line{
+  opacity: 1;
+}
+.gradient-fill-hover{transition:none}.gradient-fill-hover span{display:inline-block;letter-spacing:1px;transition:color linear .2s}.gradient-fill-hover:hover{color:inherit}.gradient-fill-hover:hover span{display:inline-block;letter-spacing:1px;color:#b74d1c}.gradient-fill-hover:hover span:nth-child(1){color:#eec42a; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(2){color:#e8b728; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(3){color:#e2aa27; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(4){color:#dc9c25; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(5){color:#d68f24; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(6){color:#cf8222; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(7){color:#c97521; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(8){color:#c3671f; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(9){color:#bd5a1e; text-shadow: 0 0 3px}.gradient-fill-hover:hover span:nth-child(10){color:#b74d1c; text-shadow: 0 0 3px}
+.gradient-fill-hover span {
+  display: inline-block;
+  letter-spacing: 1px;
+}
+.cdk-overlay-pane{
+  width:fit-content!important;
+  position: absolute!important;
+
+}
+.cdk-overlay-connected-position-bounding-box {
+  top: 54px!important;
+  right: 13px!important;
+  height: 225px;
+  width: 153.563px;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+}

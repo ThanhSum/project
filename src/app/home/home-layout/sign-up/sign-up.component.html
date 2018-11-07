@@ -1,0 +1,69 @@
+<form action="" #signUpForm="ngForm" (ngSubmit) = "SignUp(signUpForm.value)">
+  <div class="mx-auto border mt-5 card" style="width: 35%;">
+    <h3 class="  text-center p-3 z-depth-1 ">ĐĂNG KÝ</h3>
+    <div class="m-3 px-5">
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Tài Khoản" autocomplete="none" name="TaiKhoan" ngModel minlength="3" maxlength="20" #taiKhoan="ngModel" required>
+        <mat-error *ngIf="taiKhoan.errors && (taiKhoan.touched || taiKhoan.dirty)">
+          <mat-error *ngIf="taiKhoan.hasError('required')">
+            Vui lòng nhập Tài khoản
+          </mat-error>
+          <mat-error *ngIf="taiKhoan.hasError('minlength')">
+            Tài khoản phải từ 3-20 kí tự
+          </mat-error>
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input type="password" matInput placeholder="Mật Khẩu" name="MatKhau" ngModel minlength="6" maxlength="20" #matKhau="ngModel" required
+                [pattern]='"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,}$"'>
+        <mat-error *ngIf="matKhau.errors && (matKhau.touched || matKhau.dirty)">
+          <mat-error *ngIf="matKhau.hasError('required')">
+            Vui lòng nhập Mật khẩu
+          </mat-error>
+          <mat-error *ngIf="matKhau.hasError('minlength')">
+            Mật khẩu phải từ 6-20 kí tự
+          </mat-error>
+          <mat-error *ngIf="matKhau.hasError('pattern')">
+            Mật khẩu phải có chữa HOA, thường, số, kí tự đặc biệt.
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Họ Tên" name="HoTen" ngModel minlength="1" maxlength="20" #hoTen="ngModel" required>
+        <mat-error *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+          <mat-error *ngIf="hoTen.hasError('required')">
+            Vui lòng nhập Họ tên
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Email" name="Email" #email="ngModel" ngModel required [pattern]='"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"'>
+        <mat-error *ngIf="email.errors && (email.touched || email.dirty)">
+          <mat-error *ngIf="email.hasError('required')">
+            Vui lòng nhập Email
+          </mat-error>
+          <mat-error *ngIf="email.hasError('pattern')">
+            Email chưa đúng
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Số Điện Thoại" name="SoDT" ngModel minlength="10" #soDT="ngModel" required>
+        <mat-error *ngIf="soDT.errors && (soDT.touched || soDT.dirty)">
+          <mat-error *ngIf="soDT.hasError('required')">
+            Vui lòng nhập Số điện thoại
+          </mat-error>
+          <mat-error *ngIf="soDT.hasError('minlength')">
+            Số điện thoại phải có 10 số
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <button class="my-3 mx-0 btn btn-1" style="text-shadow: 0 0 1px">Đăng Ký</button>
+    </div>
+  </div>
+
+
+</form>

@@ -1,0 +1,113 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg rgba-black-strong navbar-dark hoverable" style="box-shadow:0 0 200px 1px rgba(200,200,200,.2)">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand p-0" style="color: orange">
+    <i class="material-icons" style="font-size: 40px">bubble_chart</i>
+    S_PHIM
+  </a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto text-uppercase">
+      <li class="nav-item active  liHeader ">
+        <div class="line"></div>
+        <a class="nav-link text-white gradient-fill-hover " routerLink="/home">
+          <span>T</span>
+          <span>r</span>
+          <span>a</span>
+          <span>n</span>
+          <span>g</span>
+          <span>&nbsp;</span>
+          <span>C</span>
+          <span>h</span>
+          <span>ủ</span>
+        </a>
+        <div class="line"></div>
+      </li>
+      <li class="nav-item  liHeader">
+        <div class="line hoverable"></div>
+        <a class="nav-link text-white gradient-fill-hover" routerLink="/home/phimdangchieu">
+          <span>đ</span>
+          <span>a</span>
+          <span>n</span>
+          <span>g</span>
+          <span>&nbsp;</span>
+          <span>C</span>
+          <span>h</span>
+          <span>i</span>
+          <span>ế</span>
+          <span>u</span>
+        </a>
+        <div class="line hoverable"></div>
+      </li>
+      <li class="nav-item  liHeader">
+        <div class="line hoverable"></div>
+        <a class="nav-link text-white gradient-fill-hover" routerLink="/home/phimsapchieu">
+          <span>s</span>
+          <span>ắ</span>
+          <span>p</span>
+          <span>&nbsp;</span>
+          <span>C</span>
+          <span>h</span>
+          <span>i</span>
+          <span>ế</span>
+          <span>u</span>
+        </a>
+        <div class="line hoverable"></div>
+      </li>
+      <li class="nav-item  liHeader">
+        <div class="line"></div>
+        <a class="nav-link text-white gradient-fill-hover" routerLink="/home/signin" *ngIf="!getCurrentUser()">
+          <span>đ</span>
+          <span>ă</span>
+          <span>n</span>
+          <span>g</span>
+          <span>&nbsp;</span>
+          <span>n</span>
+          <span>h</span>
+          <span>ậ</span>
+          <span>p</span>
+        </a>
+        <div class="line hoverable"></div>
+      </li>
+      <li class="nav-item liHeader" *ngIf="!getCurrentUser()">
+        <div class="line"></div>
+        <a class="nav-link text-white gradient-fill-hover" routerLink="/home/signup">
+          <span>đ</span>
+          <span>ă</span>
+          <span>n</span>
+          <span>g</span>
+          <span>&nbsp;</span>
+          <span>k</span>
+          <span>ý</span>
+        </a>
+        <div class="line hoverable"></div>
+      </li>
+    </ul>
+    <!-- Links -->
+
+    <li class="ml-auto" style="width: auto">
+      <button [matMenuTriggerFor]="menu" class=" text-white text-uppercase btnStyle "
+              *ngIf="TaiKhoan">
+        CHÀO {{TaiKhoan}}
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/home/user">T.T Tài Khoản</button>
+          <button mat-menu-item routerLink="/admin/phim" *ngIf='CurrentUser.MaLoaiNguoiDung == "QuanTri"'>Trang Quản Trị</button>
+          <button mat-menu-item (click)="LogOut()" routerLink="/home">Đăng Xuất</button>
+        </mat-menu>
+      </button>
+
+    </li>
+  </div>
+  <!-- Collapsible content -->
+</nav>
+<!--/.Navbar-->

@@ -1,0 +1,46 @@
+.stickBot {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 70px;
+  line-height: 70px; /* Vertically center the text there */
+  background-color: #212121;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  .stickBot{
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .stickBot{
+    height: 80px;
+    line-height: 45px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .stickBot{
+    height: 40px;
+    line-height: 22px;
+  }
+  .bookingTitle,span {
+    font-size: 14px!important;
+  }
+}
+@media screen and (max-width: 320px) {
+  .stickBot{
+    height: 30px;
+    line-height: 16px;
+    font-size: 12px!important;
+  }
+  .dsGhe{
+    margin-top: 0!important;
+  }
+  .btnBooking{
+    margin-bottom: 10px!important;
+
+  }
+}

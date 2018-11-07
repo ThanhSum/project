@@ -1,0 +1,173 @@
+<div class="container-fluid py-3">
+  <h3 class="py-3 text-center px-0">DANH SÁCH PHIM</h3>
+  <button class="btnStyle2" (click)="openWindowCustomClass(content)"><i class="fa fa-plus"></i> THÊM PHIM</button>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>MÃ PHIM</th>
+      <th>TÊN PHIM</th>
+      <th>HÌNH ẢNH</th>
+      <th>NGÀY KHỞI CHIẾU</th>
+      <th>SỬA/ XÓA PHIM</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let phim of DanhSachPhimHienThi">
+      <td>{{phim.MaPhim}}</td>
+      <td>{{phim.TenPhim}}</td>
+      <td><img [src]="phim.HinhAnh" height="50px" width="100px"></td>
+      <td>{{phim.NgayKhoiChieu |date: 'dd/mm/yyyy'}}</td>
+      <td>
+        <button mat-raised-button="" class="mr-2 mb-2" (click)="SuaPhim(capNhatContent, phim)">Sửa</button>
+        <button mat-raised-button="" color="warn" (click)="XoaPhim(phim.MaPhim)">Xóa</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-body bg-white  p-0">
+    <h4 class="text-dark text-center z-depth-1 py-2 peach-gradient ">THÊM PHIM</h4>
+    <form #dangKyPhim='ngForm' class="px-5 text-dark py-0">
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Mã Phim" autocomplete="none" name="MaPhim" ngModel minlength="1" #maPhim="ngModel"
+               required>
+        <mat-error *ngIf="maPhim.errors && (maPhim.touched || maPhim.dirty)">
+          <mat-error *ngIf="maPhim.hasError('required')">
+            Vui lòng nhập Mã phim
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Tên Phim" name="TenPhim" ngModel #tenPhim="ngModel" required>
+        <mat-error *ngIf="tenPhim.errors && (tenPhim.touched || tenPhim.dirty)">
+          <mat-error *ngIf="tenPhim.hasError('required')">
+            Vui lòng nhập Tên phim
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Trailer" name="Trailer" ngModel #trailer="ngModel" required>
+        <mat-error *ngIf="trailer.errors && (trailer.touched || trailer.dirty)">
+          <mat-error *ngIf="trailer.hasError('required')">
+            Vui lòng nhập Trailer
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <input type="file" placeholder="HinhAnh" name="HinhAnh" #hinhAnh ngModel>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Mã Nhóm" name="MaNhom" ngModel #maNhom="ngModel" required  [(ngModel)]='MaNhom' readonly>
+        <mat-error *ngIf="maNhom.errors && (maNhom.touched || maNhom.dirty)">
+          <mat-error *ngIf="maNhom.hasError('required')">
+            Vui lòng nhập Mã nhóm
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Mô Tả" name="MoTa" ngModel #moTa="ngModel" required>
+        <mat-error *ngIf="moTa.errors && (moTa.touched || moTa.dirty)">
+          <mat-error *ngIf="moTa.hasError('required')">
+            Vui lòng nhập Mô tả
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 text-dark">
+        <input matInput placeholder="Ngày Khởi Chiếu" name="NgayKhoiChieu" ngModel #ngayKhoiChieu="ngModel" required
+               type="date">
+        <mat-error *ngIf="ngayKhoiChieu.errors && (ngayKhoiChieu.touched || ngayKhoiChieu.dirty)">
+          <mat-error *ngIf="ngayKhoiChieu.hasError('required')">
+            Vui lòng chọn Ngày khởi chiếu
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Đánh Giá" name="DanhGia" ngModel #danhGia="ngModel" required>
+        <mat-error *ngIf="danhGia.errors && (danhGia.touched || danhGia.dirty)">
+          <mat-error *ngIf="danhGia.hasError('required')">
+            Vui lòng nhập Đánh giá
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+    <div class="text-right py-0 my-0 " >
+      <button type="submit" color="primary" class="btn btn-1 ml-auto " (click)="DangKyPhim(dangKyPhim.value, hinhAnh.files)" >Thêm</button>
+      <button type="button" class="btn btn-1 ml-auto mr-0" (click)="modal.close('Close click')">Close</button>
+    </div>
+    </form>
+
+  </div>
+</ng-template>
+
+<ng-template #capNhatContent let-modal>
+  <div class="modal-body bg-white  p-0">
+    <h4 class="text-dark text-center z-depth-1 py-2 peach-gradient ">SỬA THÔNG TIN PHIM</h4>
+    <form #dangKyPhim='ngForm' class="px-5 text-dark" (ngSubmit) = "EditMovie(dangKyPhim.value, hinhAnh.files)">
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Mã Phim" autocomplete="none" name="MaPhim" ngModel minlength="1" #maPhim="ngModel"
+               required [(ngModel)]='PhimCanSua.MaPhim'>
+        <mat-error *ngIf="maPhim.errors && (maPhim.touched || maPhim.dirty)">
+          <mat-error *ngIf="maPhim.hasError('required')">
+            Vui lòng nhập Mã phim
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Tên Phim" name="TenPhim" ngModel #tenPhim="ngModel" required [(ngModel)]='PhimCanSua.TenPhim'>
+        <mat-error *ngIf="tenPhim.errors && (tenPhim.touched || tenPhim.dirty)">
+          <mat-error *ngIf="tenPhim.hasError('required')">
+            Vui lòng nhập Tên phim
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Trailer" name="Trailer" ngModel #trailer="ngModel" required [(ngModel)]='PhimCanSua.Trailer'>
+        <mat-error *ngIf="trailer.errors && (trailer.touched || trailer.dirty)">
+          <mat-error *ngIf="trailer.hasError('required')">
+            Vui lòng nhập Trailer
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <input type="file" placeholder="HinhAnh" name="HinhAnh" #hinhAnh ngModel>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Mã Nhóm" name="MaNhom" ngModel #maNhom="ngModel" required [(ngModel)]='PhimCanSua.MaNhom'>
+        <mat-error *ngIf="maNhom.errors && (maNhom.touched || maNhom.dirty)">
+          <mat-error *ngIf="maNhom.hasError('required')">
+            Vui lòng nhập Số điện thoại
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Mô Tả" name="MoTa" ngModel #moTa="ngModel" required  [(ngModel)]='PhimCanSua.MoTa'>
+        <mat-error *ngIf="moTa.errors && (moTa.touched || moTa.dirty)">
+          <mat-error *ngIf="moTa.hasError('required')">
+            Vui lòng nhập Mô tả
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 text-dark">
+        <input matInput placeholder="Ngày Khởi Chiếu" name="NgayKhoiChieu" ngModel #ngayKhoiChieu="ngModel" required
+               type="date" [(ngModel)]='PhimCanSua.NgayKhoiChieu'>
+        <mat-error *ngIf="ngayKhoiChieu.errors && (ngayKhoiChieu.touched || ngayKhoiChieu.dirty)">
+          <mat-error *ngIf="ngayKhoiChieu.hasError('required')">
+            Vui lòng chọn Ngày khởi chiếu
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Đánh Giá" name="DanhGia" ngModel #danhGia="ngModel" required [(ngModel)]='PhimCanSua.DanhGia'>
+        <mat-error *ngIf="danhGia.errors && (danhGia.touched || danhGia.dirty)">
+          <mat-error *ngIf="danhGia.hasError('required')">
+            Vui lòng nhập Đánh giá
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <div class="text-right mb-2" >
+        <button type="submit" class="btn btn-1">CẬP NHẬT</button>
+        <button type="button" class="btn btn-1 ml-auto mr-0" (click)="modal.close('Close click')" >Close</button>
+      </div>
+    </form>
+
+  </div>
+</ng-template>
+
+

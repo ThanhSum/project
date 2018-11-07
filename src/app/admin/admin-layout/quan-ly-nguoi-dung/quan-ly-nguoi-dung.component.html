@@ -1,0 +1,228 @@
+<div class="container-fluid py-3">
+  <h3 class="py-3 text-center px-0">DANH SÁCH NGƯỜI DÙNG</h3>
+  <button class="btnStyle2" (click)="openModal(danhSachNguoiDung)"><i class="fa fa-plus"></i> THÊM NGƯỜI DÙNG</button>
+  <table class="table">
+    <thead>
+    <tr class="text-uppercase">
+      <th>Tài Khoản</th>
+      <th>Mật Khẩu</th>
+      <th>Họ Tên</th>
+      <th>Email</th>
+      <th>Số Điện Thoại</th>
+      <th>Mã LND</th>
+      <th>Sửa/ Xóa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let nguoiDung of DanhSachNguoiDungHienThi">
+      <td>{{nguoiDung.TaiKhoan}}</td>
+      <td>{{nguoiDung.MatKhau}}</td>
+      <td>{{nguoiDung.HoTen}}</td>
+      <td>{{nguoiDung.Email}}</td>
+      <td>{{nguoiDung.SoDT}}</td>
+      <td>{{nguoiDung.MaLoaiNguoiDung}}</td>
+      <td>
+        <button mat-raised-button="" class="mr-2 mb-2" (click)="SuaNguoiDung(suaNguoiDungModal, nguoiDung)">Sửa</button>
+        <button mat-raised-button="" color="warn" (click)="XoaNguoiDung(nguoiDung.TaiKhoan)">Xóa</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #danhSachNguoiDung let-modal>
+  <div class="modal-body p-0 text-dark">
+    <form action="" #themNguoiDung="ngForm">
+      <div class="mx-auto border card">
+        <h3 class="  text-center p-3 z-depth-1 ">THÊM NGƯỜI DÙNG</h3>
+        <div class="px-5">
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Tài Khoản" autocomplete="none" name="TaiKhoan" ngModel minlength="3"
+                   maxlength="20" #taiKhoan="ngModel" required>
+            <mat-error *ngIf="taiKhoan.errors && (taiKhoan.touched || taiKhoan.dirty)">
+              <mat-error *ngIf="taiKhoan.hasError('required')">
+                Vui lòng nhập Tài khoản
+              </mat-error>
+              <mat-error *ngIf="taiKhoan.hasError('minlength')">
+                Tài khoản phải từ 3-20 kí tự
+              </mat-error>
+            </mat-error>
+
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Mật Khẩu" name="MatKhau" ngModel minlength="6" maxlength="20"
+                   #matKhau="ngModel" required
+                   [pattern]='"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,}$"'>
+            <mat-error *ngIf="matKhau.errors && (matKhau.touched || matKhau.dirty)">
+              <mat-error *ngIf="matKhau.hasError('required')">
+                Vui lòng nhập Mật khẩu
+              </mat-error>
+              <mat-error *ngIf="matKhau.hasError('minlength')">
+                Mật khẩu phải từ 6-20 kí tự
+              </mat-error>
+              <mat-error *ngIf="matKhau.hasError('pattern')">
+                Mật khẩu phải có chữa HOA, thường, số, kí tự đặc biệt.
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Họ Tên" name="HoTen" ngModel minlength="1" maxlength="20" #hoTen="ngModel"
+                   required>
+            <mat-error *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+              <mat-error *ngIf="hoTen.hasError('required')">
+                Vui lòng nhập Họ tên
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Email" name="Email" #email="ngModel" ngModel required [pattern]='"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"'>
+            <mat-error *ngIf="email.errors && (email.touched || email.dirty)">
+              <mat-error *ngIf="email.hasError('required')">
+                Vui lòng nhập Email
+              </mat-error>
+              <mat-error *ngIf="email.hasError('pattern')">
+                Email chưa đúng
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Số Điện Thoại" name="SoDT" ngModel minlength="10" #soDT="ngModel" required>
+            <mat-error *ngIf="soDT.errors && (soDT.touched || soDT.dirty)">
+              <mat-error *ngIf="soDT.hasError('required')">
+                Vui lòng nhập Số điện thoại
+              </mat-error>
+              <mat-error *ngIf="soDT.hasError('minlength')">
+                Số điện thoại phải có 10 số
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Mã Nhóm" name="MaNhom" ngModel minlength="1" #maNhom="ngModel" required
+                   [(ngModel)]='MaNhom' readonly>
+            <mat-error *ngIf="maNhom.errors && (maNhom.touched || maNhom.dirty)">
+              <mat-error *ngIf="maNhom.hasError('required')">
+                Vui lòng nhập Mã Nhóm
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <label >Mã Loại Người Dùng: </label>
+            <mat-radio-group name ="MaLoaiNguoiDung" ngModel>
+              <mat-radio-button value="QuanTri">Quản Trị</mat-radio-button>
+              <mat-radio-button value="KhachHang">Khách Hàng</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div class="text-right">
+            <button type="submit" class="my-3 mx-0 btn btn-1 mr-2" style="text-shadow: 0 0 1px"
+                    (click)="Them(themNguoiDung.value)">THÊM
+            </button>
+            <button type="button" class="btn btn-1 ml-auto mr-0" (click)="modal.close('Close click')"
+                    style="text-shadow: 0 0 1px">CLOSE
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</ng-template>
+<ng-template #suaNguoiDungModal let-modal>
+  <div class="modal-body p-0 text-dark">
+    <form action="" #themNguoiDung="ngForm">
+      <div class="mx-auto border card">
+        <h3 class="  text-center p-3 z-depth-1 ">SỬA THÔNG TIN NGƯỜI DÙNG</h3>
+        <div class="px-5">
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Tài Khoản" autocomplete="none" name="TaiKhoan" ngModel minlength="3"
+                   maxlength="20" #taiKhoan="ngModel" required [(ngModel)] = 'NguoiDungCanSua.TaiKhoan' readonly>
+            <mat-error *ngIf="taiKhoan.errors && (taiKhoan.touched || taiKhoan.dirty)">
+              <mat-error *ngIf="taiKhoan.hasError('required')">
+                Vui lòng nhập Tài khoản
+              </mat-error>
+              <mat-error *ngIf="taiKhoan.hasError('minlength')">
+                Tài khoản phải từ 3-20 kí tự
+              </mat-error>
+            </mat-error>
+
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Mật Khẩu" name="MatKhau" ngModel minlength="6" maxlength="20"
+                   #matKhau="ngModel" required
+                   [pattern]='"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,}$"' [(ngModel)] = 'NguoiDungCanSua.MatKhau'>
+            <mat-error *ngIf="matKhau.errors && (matKhau.touched || matKhau.dirty)">
+              <mat-error *ngIf="matKhau.hasError('required')">
+                Vui lòng nhập Mật khẩu
+              </mat-error>
+              <mat-error *ngIf="matKhau.hasError('minlength')">
+                Mật khẩu phải từ 6-20 kí tự
+              </mat-error>
+              <mat-error *ngIf="matKhau.hasError('pattern')">
+                Mật khẩu phải có chữa HOA, thường, số, kí tự đặc biệt.
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Họ Tên" name="HoTen" ngModel minlength="1" maxlength="20" #hoTen="ngModel"
+                   required [(ngModel)] = 'NguoiDungCanSua.HoTen'>
+            <mat-error *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+              <mat-error *ngIf="hoTen.hasError('required')">
+                Vui lòng nhập Họ tên
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Email" name="Email" #email="ngModel" ngModel required [pattern]='"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"' [(ngModel)] = 'NguoiDungCanSua.Email'>
+            <mat-error *ngIf="email.errors && (email.touched || email.dirty)">
+              <mat-error *ngIf="email.hasError('required')">
+                Vui lòng nhập Email
+              </mat-error>
+              <mat-error *ngIf="email.hasError('pattern')">
+                Email chưa đúng
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Số Điện Thoại" name="SoDT" ngModel minlength="10" #soDT="ngModel" required [(ngModel)] = 'NguoiDungCanSua.SoDT'>
+            <mat-error *ngIf="soDT.errors && (soDT.touched || soDT.dirty)">
+              <mat-error *ngIf="soDT.hasError('required')">
+                Vui lòng nhập Số điện thoại
+              </mat-error>
+              <mat-error *ngIf="soDT.hasError('minlength')">
+                Số điện thoại phải có 10 số
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Mã Nhóm" name="MaNhom" ngModel minlength="1" #maNhom="ngModel" required
+                   [(ngModel)]='MaNhom' readonly>
+            <mat-error *ngIf="maNhom.errors && (maNhom.touched || maNhom.dirty)">
+              <mat-error *ngIf="maNhom.hasError('required')">
+                Vui lòng nhập Mã Nhóm
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <label >Mã Loại Người Dùng: </label>
+            <mat-radio-group name ="MaLoaiNguoiDung" ngModel [(ngModel)] = 'NguoiDungCanSua.MaLoaiNguoiDung'>
+              <mat-radio-button value="QuanTri">Quản Trị</mat-radio-button>
+              <mat-radio-button value="KhachHang">Khách Hàng</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div class="text-right">
+            <button type="submit" class="my-3 mx-0 btn btn-1 mr-2" style="text-shadow: 0 0 1px"
+                    (click)="CapNhatNguoiDung(NguoiDungCanSua)">CẬP NHẬT
+            </button>
+            <button type="button" class="btn btn-1 ml-auto mr-0" (click)="modal.close('Close click')"
+                    style="text-shadow: 0 0 1px">CLOSE
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</ng-template>

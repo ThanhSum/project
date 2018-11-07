@@ -1,0 +1,57 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: black;
+  text-shadow: 0 0 1px;
+}
+
+.btn-1 {
+  background-image: linear-gradient(to right, #f6d365 ,#fda085, #f6d365 );
+  background-size: 200% auto;
+  transition: 0.5s;
+  color: #000;
+  text-shadow: 0 0 1px;
+
+}
+.btnStyle{
+  border-image: linear-gradient(to right, orangered 0%,orange 100%);
+  border-image-slice: 1;
+  border-width: 1px;
+  background: #000;
+  color: white;
+  padding: 5px 16px;
+  outline-style: none!important;
+
+}
+.btnStyle:hover{
+  box-shadow: 0 0 50px 0 rgba(247,149,30,.35), 0 0 20px 0 rgba(247,149,30,.3) inset;
+  text-shadow: 0 0 3px #fff;
+  cursor: pointer;
+  outline-style: none!important;
+}
+
+.btnStyle2{
+  border-image: linear-gradient(to right, orangered 0%,orange 100%);
+  border-image-slice: 1;
+  border-width: 2px;
+  background: #000;
+  color: white;
+  padding: 5px 16px;
+  outline-style: none!important;
+
+}
+.btnStyle2:hover{
+  box-shadow: 0 0 50px 0 rgba(247,149,30,.35), 0 0 20px 0 rgba(247,149,30,.3) inset;
+  text-shadow: 0 0 3px #fff;
+  cursor: pointer;
+  outline-style: none!important;
+}
+body{
+  font-family: 'Roboto Condensed', sans-serif;
+  line-height: 32px;
+
+}
+
+
+

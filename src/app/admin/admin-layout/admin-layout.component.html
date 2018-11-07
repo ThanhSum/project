@@ -1,0 +1,17 @@
+<app-admin-nav></app-admin-nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2" style="box-shadow:0 0 200px 1px rgba(200,200,200,.2)">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-lg-10">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"></div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><app-quan-ly-phim></app-quan-ly-phim></div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" ><app-quan-ly-nguoi-dung></app-quan-ly-nguoi-dung></div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"></div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

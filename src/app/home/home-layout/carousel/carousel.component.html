@@ -1,0 +1,49 @@
+<div id="carouselExampleIndicators" class="carousel slide  " data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="stt"
+        *ngFor="let carousel of ListCarousel; let stt = index" [class.active]="stt == 0"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="view carousel-item" *ngFor="let carousel of ListCarousel; let stt= index" [class.active]="stt == 0">
+      <img [src]="carousel.img" class="img-fluid w-100" alt="">
+      <div class="mask flex-center rgba-black-light ">
+        <div class="white-text btn-play " data-target="#myModal" data-toggle="modal"
+             (click)="openLg(content,carousel)">
+          <div><img src="../../../../assets/img/btn_play.png" ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <img src="../../../../assets/img/left11.png" alt="">
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <img src="../../../../assets/img/right11.png" alt="">
+  </a>
+
+
+</div>
+
+<ng-template #content let-modal style="position: relative" >
+  <div class="your-centered-div ">
+    <iframe height="480" class="w-100" [src]="choose |safe" frameborder="0" allow="autoplay ; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <button type="button" mat-mini-fab=""  class="close bg-light " aria-label="Close"
+          (click)="modal.dismiss('Cross click')" style="outline-style: none">
+    <i class="material-icons">
+      close
+    </i>
+  </button>
+
+</ng-template>
+
+<button class="btn btn-outline-primary mb-2 mr-2 d-none" (click)="openWindowCustomClass(content)">Modal with window custom
+  class
+</button>
+<button class="btn btn-outline-primary mb-2 mr-2 d-none" (click)="openBackDropCustomClass(content)">Modal with backdrop custom
+  class
+</button>
+<button class="btn btn-outline-primary mb-2 mr-2 d-none" (click)="openSm(content)">Small modal</button>
+<button class="btn btn-outline-primary mb-2 mr-2 d-none" (click)="openLg(content)">Large modal</button>
+<button class="btn btn-outline-primary mb-2 mr-2 d-none" (click)="openVerticallyCentered(content)">Modal vertically centered
+</button>

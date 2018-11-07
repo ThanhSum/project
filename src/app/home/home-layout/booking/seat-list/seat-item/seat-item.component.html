@@ -1,0 +1,8 @@
+<button class="btn ghe "  style="transform: skewX(10deg)"
+        *ngIf="!gheItem.DaDat; else gheDaChon"
+        [ngClass]="{DangChon: TrangThaiDatGhe, ChuaDat: !TrangThaiDatGhe}"
+        (click)="DatGhe(gheItem)"><div style="opacity: 0">{{gheItem.TenGhe}}</div>
+</button>
+<ng-template #gheDaChon>
+  <div class="ghe btn text-white" disabled  style="transform: skewX(10deg);"><div style="opacity: 0">{{gheItem.TenGhe}}</div></div>
+</ng-template>

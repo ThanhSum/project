@@ -1,0 +1,25 @@
+<div class="text-center">
+  <div class="row">
+    <div class="col-lg-6 mx-auto text-white">
+      <div class="animated zoomIn " style="transform: skewX(-0deg);box-shadow:0 0px 100px 1px rgba(200,200,200,.2);margin-right: -45px;">
+        <img src ="https://i.gifer.com/DlnI.gif" class="img-fluid w-100" style="max-height: 200px">MÀN HÌNH</div>
+      <div class="px-2 mt-3 dsGhe" style="transform: skewX(-10deg)">
+        <app-seat-list [danhSachGhe]="danhSachGhe"></app-seat-list>
+      </div>
+    </div>
+
+  </div>
+  <div class="stickBot container-fluid w-100" *ngIf="DanhSachVeDaChon">
+    <div class="container-fluid " style="font-size: 22px; font-weight: bold;">
+      <div class="row justify-content-lg-end justify-content-md-center">
+         <div class="mr-2 bookingTitle">GHẾ ĐANG CHỌN: </div>
+         <span *ngFor="let ghe of DanhSachVeDaChon" class="mr-2 text-warning">{{ghe.TenGhe}}</span>
+        <div class="col-md-6 bookingTitle">
+          TỔNG TIỀN: <span class="text-warning"> {{TongTien |number}} VNĐ </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <button class="btnStyle2 mt-5 m-2 btnBooking" (click)="DatVe()" >ĐẶT VÉ</button>
+</div>

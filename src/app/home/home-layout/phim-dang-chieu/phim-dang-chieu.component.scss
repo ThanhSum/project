@@ -1,0 +1,38 @@
+.lineTop {
+  animation: lineTop 5s infinite linear;
+}
+
+@keyframes lineTop {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 10%;
+  }
+  50% {
+    width: 20%;
+  }
+  75% {
+    width: 10%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+.phimDangChieu input{
+  color: white!important;
+}
+.phimDangChieu mat-icon, mat-label {
+  color: white !important;
+}
+
+.phimDangChieu .mat-form-field-label{
+  color: white !important;
+}
+.phimDangChieu .mat-form-field-underline {
+  background-color: white !important;;
+}
+.phimDangChieu .mat-form-field-ripple {
+  background-color: orange !important;
+}
+

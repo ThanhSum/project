@@ -1,0 +1,16 @@
+.mat-tab-label{
+ color: white!important;
+}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: linear-gradient(to right, orange, orangered);
+}
+.mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+  border-color: rgba(255,255,255,.38);
+}
+.mat-tab-header-pagination-chevron {
+  border-color: rgba(255,255,255,.87);
+}
+.mat-tab-body-content {
+  text-align: center;
+  padding: 40px 0;
+}

@@ -1,0 +1,15 @@
+<form action="" #loginForm = "ngForm" (ngSubmit) ="Login(loginForm.value)" class="z-depth-5">
+  <div class=" card  mx-auto mt-5 " style="width: 35%;">
+    <h3 class="p-3 text-center  z-depth-1">ĐĂNG NHẬP</h3>
+    <div class="m-3 px-5 ">
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Tài Khoản" autocomplete="none" name="TaiKhoan" ngModel>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Mật Khẩu" name="MatKhau" ngModel type="password">
+      </mat-form-field>
+      <button  class="my-3 mx-0 btn btn-1" style="text-shadow: 0 0 1px">Đăng Nhập</button>
+    </div>
+  </div>
+
+</form>

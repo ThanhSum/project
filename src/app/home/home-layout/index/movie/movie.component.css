@@ -1,0 +1,22 @@
+
+.whats-on-peek__item.inactive{opacity:.2;z-index:1}
+.whats-on-peek__item.active{opacity:1!important;color:#fff;z-index:4!important;}
+.whats-on-peek__item{transition:.3s opacity ease-in-out;border-bottom:none;cursor:pointer;padding-top:1.4em;display:block;position:relative;z-index:3;box-shadow:0 0 200px 1px rgba(200,200,200,.2);padding-bottom:0}.whats-on-peek__item img{width:100%;display:block}
+@keyframes yourAnimation1{
+  0%{
+    transform: scale(1);
+  }
+  10%{
+    transform: scale(1.01);
+  }
+  50%{
+    transform: scale(1.05);
+  }
+  100%{
+    transform: scale(1.1);
+  }
+}
+
+.elementToAnimate{
+
+}

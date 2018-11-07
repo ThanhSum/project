@@ -1,0 +1,46 @@
+footer{
+  box-shadow:0 0 200px 1px rgba(200,200,200,.2);
+  text-shadow: none!important;
+}
+footer .ulFooter li a,footer .ulFooter li a.gradient-fill-hover span{
+  padding: 0!important;
+  text-shadow: none!important;
+  letter-spacing: 1px;
+}
+.ulFooter li{
+  padding: 11px 10px;
+}
+.ulFooter .Social i{
+  margin-left: 10px;
+  font-size: 18px;
+  color: orange;
+  border: 1px solid orange;
+  padding: 5px 5px;
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.Subscribe input{
+  color: white!important;
+}
+.Subscribe mat-icon, mat-label {
+  color: white !important;
+}
+
+.Subscribe .mat-form-field-label{
+  color: white !important;
+}
+.Subscribe .mat-form-field-underline {
+  background-color: white !important;;
+}
+.Subscribe .mat-form-field-ripple {
+  background-color: orange !important;
+}
+
+gradient-fill span{display:inline-block;letter-spacing:1px;transition:color linear .2s}.gradient-fill{color:inherit}.gradient-fill span{display:inline-block;letter-spacing:1px;color:#b74d1c}.gradient-fill span:nth-child(1){color:#eec42a; text-shadow: 0 0 3px}.gradient-fill span:nth-child(2){color:#e8b728; text-shadow: 0 0 3px}.gradient-fill span:nth-child(3){color:#e2aa27; text-shadow: 0 0 3px}.gradient-fill span:nth-child(4){color:#dc9c25; text-shadow: 0 0 3px}.gradient-fill span:nth-child(5){color:#d68f24; text-shadow: 0 0 3px}.gradient-fill span:nth-child(6){color:#cf8222; text-shadow: 0 0 3px}.gradient-fill span:nth-child(7){color:#c97521; text-shadow: 0 0 3px}.gradient-fill span:nth-child(8){color:#c3671f; text-shadow: 0 0 3px}.gradient-fill span:nth-child(9){color:#bd5a1e; text-shadow: 0 0 3px}.gradient-fill span:nth-child(10){color:#b74d1c; text-shadow: 0 0 3px}
+.gradient-fill span {
+  display: inline-block;
+  letter-spacing: 1px;
+}

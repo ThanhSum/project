@@ -1,0 +1,38 @@
+<div style="box-shadow:0 0 200px 1px rgba(200,200,200,.2)" class="py-2">
+  <div class="text-center container mb-4" id="PhimDangChieu">
+    <div style="height: 3px; background: linear-gradient(to right, orange, orangered);width: 10%;"
+         class="mt-5 lineTop"></div>
+    <h3 class="text-left text-white py-2">PHIM SẮP CHIẾU</h3>
+    <div class="  text-center py-4">
+      <div class="row">
+        <div class="col-lg-3 col-md-6  mb-3" *ngFor="let phim of DanhSachPhimSapChieu">
+          <div class="view overlay zoom" style="box-shadow:0 0 200px 1px rgba(200,200,200,.2)">
+            <a>
+              <img [src]="phim.HinhAnh" alt="" height="380px" width="100%">
+              <div class="mask rgba-black-strong flex-center" (click)="openLg(phimSapChieuModal, phim)">
+                <p class="text-white"><i class="material-icons" style="font-size: 35px">
+                  play_arrow
+                </i></p>
+              </div>
+            </a>
+          </div>
+          <h4 class="card-title text-uppercase mt-4 text-white">{{phim.TenPhim}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #phimSapChieuModal let-modal style="position: relative" >
+  <div class="your-centered-div">
+    <iframe width="780" height="480" [src]="phimItem.Trailer |safe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <button type="button" mat-mini-fab=""  class="close bg-light " aria-label="Close"
+          (click)="modal.dismiss('Cross click')" style="outline: none;">
+    <i class="material-icons">
+      close
+    </i>
+  </button>
+
+</ng-template>

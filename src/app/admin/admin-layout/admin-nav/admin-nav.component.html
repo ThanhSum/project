@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1 myNav ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home" style="color: orange;">
+      <i class="material-icons" style="font-size: 40px">bubble_chart</i>
+      S_PHIM
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse adminNav " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"></ul>
+      <div class="form-inline mr-3">
+        <mat-form-field>
+          <mat-label>Tìm Phim/ Tài Khoản</mat-label>
+          <input matInput #timPhimAdmin (change)="TimPhim(timPhimAdmin.value)">
+          <mat-icon matSuffix  style="cursor: pointer">search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <a [matMenuTriggerFor]="menu" class=" text-white text-uppercase "
+           *ngIf="TaiKhoan">
+          <i class="fa fa-user-circle-o" style="font-size: 20px;"></i>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item  routerLink="/home" (click)="DangXuat()">Đăng Xuất</button>
+          </mat-menu>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+

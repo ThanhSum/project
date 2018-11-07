@@ -1,0 +1,5 @@
+.testBTN:hover{
+  box-shadow: 0 0 50px 0 rgba(247,149,30,.35), 0 0 20px 0 rgba(247,149,30,.3) inset;
+  text-shadow: 0 0 3px #fff;
+}
+

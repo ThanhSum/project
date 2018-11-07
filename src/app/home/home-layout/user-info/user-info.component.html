@@ -1,0 +1,47 @@
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-md-6 p-0 lichSuDatVe">
+      <h4 class="text-white ">LỊCH SỬ ĐẶT VÉ</h4>
+      <hr>
+      <table class="table text-white text-uppercase ">
+        <thead>
+        <tr>
+          <th>Tên Phim</th>
+          <th>Ngày Đặt</th>
+          <th>Mã Ghế</th>
+          <th>Rạp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ve of DanhSachVeDaDat">
+          <th>{{ve.TenPhim}}</th>
+          <th>{{ve.NgayDat |date: 'dd/mm/yyyy'}}</th>
+          <th>{{ve.MaGhe}}</th>
+          <th>{{ve.Rap}}</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6 text-white text-uppercase">
+      <h4>THÔNG TIN TÀI KHOẢN</h4>
+      <hr>
+      <table class="table">
+        <thead class="">
+        <tr>
+          <th>Tài Khoản </th>
+          <th>Tên </th>
+          <th>Email </th>
+          <th>Số Điện Thoại </th>
+        </tr>
+        </thead>
+        <tbody>
+        <th>{{TaiKhoan}}</th>
+        <th>{{currentUser.HoTen}}</th>
+        <th>{{currentUser.Email}}</th>
+        <th>{{currentUser.SoDT}}</th>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
